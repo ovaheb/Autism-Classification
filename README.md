@@ -1,2 +1,5 @@
 # Autism Classification
- 
+ This repository contains codes of my bachelor's thesis in which I designed a system to extract feature and classify patients with Autism Spectrum Disorder. It consists of 3 phases: Energy Thresholding, Cry Probability Threshold using YAMNet, Classification.
+ In the first phase, the energy of 50ms windows of voice are calculated and windows with energy lower than a threshold will be discarded.
+ In the second phase, probability regarding cry class of 0.98s segments of cleaned voice will be calculted. Segments with cry probability lower than a threshold will be removed. The aim is to find segments that contain clean cry voice without disruptive noises. Then feature extraction is done using YAMNet and VGGish models.
+ In the final phase, by utilizing 10-fold cross-validation, a simple neural network and SVM will be trained on the 10 first patients of dataset. Each fold contains voice segments of one ASD and one TD patient. Other patients(21 patients) are used for test set. Each segment will be labeled by majority voting between 10 models trained previously, and for each person, if the ratio of segments with ASD label to segments with TD label is higher than a threshold, ASD label will be assigned to that person.
